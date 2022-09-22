@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-var speed := 20
+var speed := 75
 var _velocity := Vector2.ZERO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
