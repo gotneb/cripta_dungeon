@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
-"class": "Player",
+"class": "Wizzard",
 "language": "GDScript",
-"path": "res://scripts/player.gd"
+"path": "res://scripts/playable_characters/wizzard.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Wizzard": ""
 }
 
 [application]
