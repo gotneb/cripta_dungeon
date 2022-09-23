@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stone_rust.png-e16f1f577f1cb316ae3589480d1e3f65.stex"
+path="res://.import/baton_with_spikes.png-413c66e6b6e795918ffdf2e8a058ab39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapons/stone_rust.png"
-dest_files=[ "res://.import/stone_rust.png-e16f1f577f1cb316ae3589480d1e3f65.stex" ]
+source_file="res://assets/weapons/baton_with_spikes.png"
+dest_files=[ "res://.import/baton_with_spikes.png-413c66e6b6e795918ffdf2e8a058ab39.stex" ]
 
 [params]
 

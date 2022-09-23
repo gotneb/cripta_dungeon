@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stone.png-12b5a557752d6347a3b697ab150286f4.stex"
+path="res://.import/red_magic_staff.png-ac7ff728990bda83c9df332193b7d06d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapons/stone.png"
-dest_files=[ "res://.import/stone.png-12b5a557752d6347a3b697ab150286f4.stex" ]
+source_file="res://assets/weapons/red_magic_staff.png"
+dest_files=[ "res://.import/red_magic_staff.png-ac7ff728990bda83c9df332193b7d06d.stex" ]
 
 [params]
 

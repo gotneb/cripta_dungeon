@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wooden.png-af2c88623726d61d534b472c43302120.stex"
+path="res://.import/saw_sword.png-8c39b8110f0246d0c857c0d0762cf510.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapons/wooden.png"
-dest_files=[ "res://.import/wooden.png-af2c88623726d61d534b472c43302120.stex" ]
+source_file="res://assets/weapons/saw_sword.png"
+dest_files=[ "res://.import/saw_sword.png-8c39b8110f0246d0c857c0d0762cf510.stex" ]
 
 [params]
 
