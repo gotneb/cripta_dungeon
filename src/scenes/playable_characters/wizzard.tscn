@@ -40,7 +40,6 @@ script = ExtResource( 1 )
 position = Vector2( -1, -6 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,3 +48,8 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.3, 0.3 )
+
+[node name="SpelsPositon" type="Node2D" parent="."]
+
+[node name="Position" type="Position2D" parent="SpelsPositon"]
+position = Vector2( 25, 0 )
