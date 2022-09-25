@@ -14,12 +14,12 @@ animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "run",
-"speed": 5.0
+"speed": 9.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -30,7 +30,8 @@ height = 4.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "run"
+animation = "idle"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 1 )

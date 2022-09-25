@@ -64,6 +64,6 @@ func _need_flip() -> bool:
 func throw_fire_ball() -> void:
 	var fire := fire_ball_path.instance()
 	fire.position = $SpelsPositon/Position.global_position
-	fire.velocity =  get_global_mouse_position()
+	fire.direction =  get_global_mouse_position() - position
 	fire.rotate($SpelsPositon.rotation)
 	get_parent().add_child(fire)
