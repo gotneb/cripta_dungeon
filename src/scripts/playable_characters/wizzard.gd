@@ -7,6 +7,7 @@ const fire_ball_path := preload("res://scenes/projectiles/wizzard/fire.tscn")
 # Variaveis
 var speed := 40
 var _velocity := Vector2.ZERO
+var fire_ball_damage := 4
 var _flip_h := false
 
 func _ready():
@@ -17,7 +18,7 @@ func _ready():
 func _process(delta):
 	_move(delta)
 
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("z_attack"):
 		$SpelsPositon.look_at(get_global_mouse_position())
 		throw_fire_ball()
 
@@ -66,4 +67,5 @@ func throw_fire_ball() -> void:
 	fire.position = $SpelsPositon/Position.global_position
 	fire.direction =  get_global_mouse_position() - position
 	fire.rotate($SpelsPositon.rotation)
+	fire.damage = fire_ball_damage
 	get_parent().add_child(fire)
