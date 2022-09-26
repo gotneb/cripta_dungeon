@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/walls.png" type="Texture" id=2]
 [ext_resource path="res://scenes/enemies/orc_shaman.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/playable_characters/wizzard.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/items/coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/playable_characters/elf.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset.png 0"
@@ -454,41 +454,6 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -65535, 1, 0, -65534, 0, 0, 720914, 1, 0, 720915, 0, 0 )
 
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 90, 0 )
-
-[node name="Coin2" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 105, 0 )
-
-[node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 120, 0 )
-
-[node name="Coin7" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 120, -14 )
-
-[node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 90, 20 )
-
-[node name="Coin5" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 105, 20 )
-
-[node name="Coin6" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 120, 20 )
-
-[node name="Coin8" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 120, 36 )
-
-[node name="Coin9" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 135, 20 )
-
-[node name="Coin10" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 135, 0 )
-
-[node name="Coin11" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 149, 10 )
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Orc Shaman" parent="Enemies" instance=ExtResource( 3 )]
@@ -504,3 +469,6 @@ position = Vector2( 60, 46 )
 position = Vector2( -93, -5 )
 
 [node name="Wizzard" parent="." instance=ExtResource( 4 )]
+
+[node name="Elf" parent="." instance=ExtResource( 5 )]
+position = Vector2( -32, -3 )
