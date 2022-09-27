@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cripta Dungeon"
-run/main_scene="res://scenes/dungeon.tscn"
+run/main_scene="res://scenes/world/tutorial.tscn"
 config/icon="res://icon.png"
 
 [display]
