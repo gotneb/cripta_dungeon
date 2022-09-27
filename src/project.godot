@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "DamageIndicator",
+"language": "GDScript",
+"path": "res://scripts/interface/damage_indicator.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "OrcShaman",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scripts/playable_characters/wizzard.gd"
 } ]
 _global_script_class_icons={
+"DamageIndicator": "",
 "OrcShaman": "",
 "Wizzard": ""
 }

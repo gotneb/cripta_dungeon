@@ -44,7 +44,7 @@ tracks/0/keys = {
 "values": [ Color( 0.901961, 0, 0, 0.901961 ), Color( 1, 1, 1, 1 ), Color( 0.901961, 0, 0, 0.901961 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Orc Shaman" type="KinematicBody2D"]
+[node name="OrcShaman" type="KinematicBody2D"]
 position = Vector2( -2, -2 )
 collision_layer = 2
 collision_mask = 4
