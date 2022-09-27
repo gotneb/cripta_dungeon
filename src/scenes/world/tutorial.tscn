@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/tileset2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/playable_characters/wizzard.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/enemies/orc_shaman.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/walls.png" type="Texture" id=6]
 [ext_resource path="res://scripts/world/tutorial.gd" type="Script" id=7]
+[ext_resource path="res://scenes/playable_characters/elf.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/weapons/regular_sword.png" type="Texture" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset2.png 0"
@@ -701,4 +703,22 @@ position = Vector2( 901, 143 )
 [node name="OrcShaman" parent="." instance=ExtResource( 5 )]
 position = Vector2( 712, 346 )
 
+[node name="Elf" parent="." instance=ExtResource( 8 )]
+position = Vector2( 891, 143 )
+
+[node name="AnimatedSprite" parent="Elf" index="0"]
+frame = 0
+
+[node name="Sword" type="Node2D" parent="Elf"]
+
+[node name="Node2D" type="Node2D" parent="Elf/Sword"]
+
+[node name="Sprite" type="Sprite" parent="Elf/Sword/Node2D"]
+position = Vector2( 0, -12 )
+rotation = -4.71239
+texture = ExtResource( 9 )
+offset = Vector2( 5, -10 )
+
 [connection signal="health_changed" from="OrcShaman" to="." method="_on_Orc_Shaman_health_changed"]
+
+[editable path="Elf"]

@@ -8,8 +8,11 @@ const VEL_MAX = 120
 const ACELERATE = 250
 const ATRITO = 400
 onready var animacaoplayer = $AnimatedSprite
+onready var sword: Node2D = get_node("Sword")
 
 func _physics_process(delta):
+	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized() #posição do mouse
+	sword.rotation = mouse_direction.angle()
 	var result = Vector2.ZERO
 	result.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	result.y = Input.get_action_strength("down") - Input.get_action_strength("up")
