@@ -79,7 +79,7 @@ func throw_fire_ball() -> void:
 func select_enemy() -> void:
 	if visible_enemies.size() == 1:
 		visible_enemies[0].set_aim_visible_to(true)
-	else:
+	elif visible_enemies.size() >= 1:
 		if Input.is_action_just_pressed("change_enemy"):
 			enemy_index += 1
 			if enemy_index >= visible_enemies.size():

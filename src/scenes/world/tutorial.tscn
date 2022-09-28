@@ -704,9 +704,9 @@ position = Vector2( 730, 334 )
 position = Vector2( 813, 359 )
 
 [node name="OrcShaman3" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 734, 282 )
+position = Vector2( 710, 258 )
 
 [node name="Wizzard" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 850, 225 )
+position = Vector2( 894, 150 )
 
 [connection signal="health_changed" from="YSort/OrcShaman" to="." method="_on_Orc_Shaman_health_changed"]
