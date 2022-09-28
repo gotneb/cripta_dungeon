@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/player/elf/male/idle/1.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/elf/male/idle/0.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/player/elf/male/run/1.png" type="Texture" id=8]
 [ext_resource path="res://assets/player/elf/male/hit/0.png" type="Texture" id=9]
 [ext_resource path="res://scripts/playable_characters/elf.gd" type="Script" id=10]
+[ext_resource path="res://assets/weapons/regular_sword.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -39,13 +40,27 @@ script = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
 shape = SubResource( 2 )
 one_way_collision_margin = 0.0
+
+[node name="Sword" type="Node2D" parent="."]
+position = Vector2( 0, 4 )
+
+[node name="Node2D" type="Node2D" parent="Sword"]
+rotation = 1.5708
+
+[node name="Sprite" type="Sprite" parent="Sword/Node2D"]
+position = Vector2( -6, 1 )
+rotation = 3.14159
+texture = ExtResource( 11 )
+offset = Vector2( 5, -4 )
+
+[node name="SwordAnimationPlayer" type="AnimationPlayer" parent="Sword"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true

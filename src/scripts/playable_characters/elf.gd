@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 #-----------------------------------------------------Movimentação---------------------------------------------------#
 var velocidade = Vector2.ZERO
 var flip = false
@@ -9,10 +10,18 @@ const ACELERATE = 250
 const ATRITO = 400
 onready var animacaoplayer = $AnimatedSprite
 onready var sword: Node2D = get_node("Sword")
+onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 
 func _physics_process(delta):
+	#Mecãnica: espada---#
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized() #posição do mouse
 	sword.rotation = mouse_direction.angle()
+	if sword.scale.y == 1 and mouse_direction.x < 0:
+		sword.scale.y = -1
+	elif sword.scale.y == -1 and mouse_direction.x > 0:
+		sword.scale.y = 1 
+	#-------------------#
+	
 	var result = Vector2.ZERO
 	result.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	result.y = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -24,17 +33,14 @@ func _physics_process(delta):
 	else:
 		animacaoplayer.play("idle")
 		velocidade = velocidade.move_toward(Vector2.ZERO, ATRITO * delta)
-		 
-	move_and_slide(velocidade)
-	$AnimatedSprite.flip_h = _need_flip()
+		
+		
+		
 	
-	#--------------------Verivicação de flip do personagem-----------------------------------------------------------#
-func _need_flip() -> bool:
-	if velocidade.x < 0:
-		flip = true
-		return true
-	elif velocidade.x > 0:
-		flip = false
-		return false
-	else:
-		return flip
+	#-----------------------------Fip horizontal Do Elfo Conforme a Direção do Mouse---------------------------------#
+	if mouse_direction.x > 0 and animated_sprite.flip_h:
+		animated_sprite.flip_h = false
+	elif mouse_direction.x < 0 and not animated_sprite.flip_h:
+		 animated_sprite.flip_h = true
+	move_and_slide(velocidade)
+	
