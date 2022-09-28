@@ -11,6 +11,7 @@ var current_hp := max_hp
 
 
 func _ready():
+	$AnimatedSprite.play("idle")
 	health_bar.set_max_health(max_hp)
 
 

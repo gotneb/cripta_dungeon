@@ -5,8 +5,13 @@ var direction := Vector2.ZERO
 var damage: int
 
 func _ready():
+	scale = Vector2(0.6, 0.6)
 	$AnimatedSprite.play("default") 
 	$Timer.start()
+	
+	var tween := create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	# warning-ignore:return_value_discarded
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.5)
 
 
 func _process(delta):
