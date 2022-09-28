@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tileset2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/playable_characters/wizzard.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/enemies/orc_shaman.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/walls.png" type="Texture" id=6]
 [ext_resource path="res://scripts/world/tutorial.gd" type="Script" id=7]
-[ext_resource path="res://scenes/playable_characters/elf.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset2.png 0"
@@ -696,13 +695,18 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 262164, 1, 0, 327700, 0, 65536, 393233, 3, 0, 393234, 3, 0, 393236, 0, 131072, 393267, 2, 0, 655417, 0, 0, 720953, 0, 65536, 786441, 2, 0, 786489, 0, 131072, 852013, 1, 0, 917549, 0, 65536, 917552, 3, 0, 917553, 3, 0, 983085, 1, 131072, 983088, 3, 0, 983089, 3, 0, 1048613, 0, 0, 1114124, 0, 0, 1114149, 0, 65536, 1179660, 0, 65536, 1179685, 0, 131072, 1245196, 0, 131072 )
 
-[node name="Wizzard" parent="." instance=ExtResource( 2 )]
-position = Vector2( 901, 143 )
+[node name="YSort" type="YSort" parent="."]
 
-[node name="OrcShaman" parent="." instance=ExtResource( 5 )]
-position = Vector2( 712, 346 )
+[node name="OrcShaman" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 730, 334 )
 
-[node name="Elf" parent="." instance=ExtResource( 8 )]
-position = Vector2( 891, 145 )
+[node name="OrcShaman2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 813, 359 )
 
-[connection signal="health_changed" from="OrcShaman" to="." method="_on_Orc_Shaman_health_changed"]
+[node name="OrcShaman3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 734, 282 )
+
+[node name="Wizzard" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 850, 225 )
+
+[connection signal="health_changed" from="YSort/OrcShaman" to="." method="_on_Orc_Shaman_health_changed"]

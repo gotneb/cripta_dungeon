@@ -4,6 +4,9 @@ extends KinematicBody2D
 # Constantes
 const fire_ball_path := preload("res://scenes/projectiles/wizzard/fire.tscn")
 
+var visible_enemies = []
+var enemy_index = 0
+
 # Variaveis
 var speed := 40
 var _velocity := Vector2.ZERO
@@ -35,6 +38,8 @@ func _move(delta: float) -> void:
 	
 	_play_animation()
 	$AnimatedSprite.flip_h = _need_flip()
+	
+	select_enemy()
 
 
 # Escolhe a animacao com base na velocidade
@@ -69,3 +74,27 @@ func throw_fire_ball() -> void:
 	fire.rotate($SpelsPositon.rotation)
 	fire.damage = fire_ball_damage
 	get_parent().add_child(fire)
+
+
+func select_enemy() -> void:
+	if visible_enemies.size() == 1:
+		visible_enemies[0].set_aim_visible_to(true)
+	else:
+		if Input.is_action_just_pressed("change_enemy"):
+			enemy_index += 1
+			if enemy_index >= visible_enemies.size():
+				enemy_index = 0
+			visible_enemies[enemy_index - 1].set_aim_visible_to(false)
+			visible_enemies[enemy_index].set_aim_visible_to(true)
+
+
+func _on_Vision_body_entered(body):
+	if body is OrcShaman:
+		visible_enemies.append(body)
+		select_enemy()
+
+
+func _on_Vision_body_exited(body):
+	if body is OrcShaman:
+		visible_enemies.pop_at(visible_enemies.find(body))
+		body.set_aim_visible_to(false)

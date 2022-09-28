@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/playable_characters/wizzard.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/wizzard/male/idle/2.png" type="Texture" id=2]
@@ -33,6 +33,9 @@ animations = [ {
 radius = 5.0
 height = 6.0
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 83.006
+
 [node name="Wizzard" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -40,7 +43,7 @@ script = ExtResource( 1 )
 position = Vector2( -1, -6 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,9 +52,19 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.25, 0.25 )
+limit_right = 1023
 smoothing_enabled = true
 
 [node name="SpelsPositon" type="Node2D" parent="."]
 
 [node name="Position" type="Position2D" parent="SpelsPositon"]
 position = Vector2( 25, 0 )
+
+[node name="Vision" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_Vision_body_exited"]
