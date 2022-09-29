@@ -96,7 +96,7 @@ script = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -111,7 +111,7 @@ position = Vector2( 0, 4 )
 rotation = 0.785398
 
 [node name="Sprite" type="Sprite" parent="Sword/Node2D"]
-position = Vector2( -10, -2 )
+position = Vector2( -5.65685, -2.82843 )
 rotation = 3.92699
 texture = ExtResource( 11 )
 offset = Vector2( 5, -4 )
@@ -122,4 +122,5 @@ anims/attack = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
+current = true
 zoom = Vector2( 0.25, 0.25 )
