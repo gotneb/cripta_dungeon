@@ -96,7 +96,7 @@ script = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -122,4 +122,5 @@ anims/attack = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
+current = true
 zoom = Vector2( 0.25, 0.25 )

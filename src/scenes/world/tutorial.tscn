@@ -708,6 +708,7 @@ position = Vector2( 813, 359 )
 position = Vector2( 710, 258 )
 
 [node name="Wizzard" parent="YSort" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 894, 150 )
 
 [node name="Elf" parent="." instance=ExtResource( 8 )]
