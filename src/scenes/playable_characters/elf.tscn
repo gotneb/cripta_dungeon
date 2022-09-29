@@ -34,10 +34,10 @@ animations = [ {
 radius = 5.0
 height = 8.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D:rotation_degrees")
+tracks/0/path = NodePath("Node2D/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -46,10 +46,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 90.0002 ]
+"values": [ 225.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Sprite:rotation_degrees")
+tracks/1/path = NodePath("Node2D:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -58,7 +58,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 225.0 ]
+"values": [ 45.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.8, 1.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 45.0, 290.0, 290.0, 90.0 ]
+"values": [ 45.0, 290.0, 290.0, 45.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Node2D/Sprite:rotation_degrees")
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.15, 0.8, 1.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 225.0, 270.0, 315.0, 315.0, 225.0 ]
+"values": [ 225.0, 270.0, 300.0, 300.0, 225.0 ]
 }
 
 [node name="Elf" type="KinematicBody2D"]
@@ -96,7 +96,7 @@ script = ExtResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -108,19 +108,18 @@ one_way_collision_margin = 0.0
 position = Vector2( 0, 4 )
 
 [node name="Node2D" type="Node2D" parent="Sword"]
-rotation = 1.5708
+rotation = 0.785398
 
 [node name="Sprite" type="Sprite" parent="Sword/Node2D"]
-position = Vector2( -7, -5 )
+position = Vector2( -10, -2 )
 rotation = 3.92699
 texture = ExtResource( 11 )
 offset = Vector2( 5, -4 )
 
 [node name="SwordAnimationPlayer" type="AnimationPlayer" parent="Sword"]
-anims/RESET = SubResource( 3 )
+anims/RESET = SubResource( 5 )
 anims/attack = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
-current = true
 zoom = Vector2( 0.25, 0.25 )
