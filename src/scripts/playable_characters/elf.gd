@@ -12,6 +12,9 @@ onready var animacaoplayer = $AnimatedSprite
 onready var sword: Node2D = get_node("Sword")
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
 onready var sword_animation_player: AnimationPlayer = sword.get_node("SwordAnimationPlayer")
+func _ready():
+	$Sword/SlashSprite.visible = false 
+
 func _physics_process(delta):
 	#Mecãnica: espada---#
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized() #posição do mouse
