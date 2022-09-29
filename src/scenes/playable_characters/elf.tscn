@@ -111,7 +111,7 @@ position = Vector2( 0, 4 )
 rotation = 0.785398
 
 [node name="Sprite" type="Sprite" parent="Sword/Node2D"]
-position = Vector2( -5.65685, -2.82843 )
+position = Vector2( -10, -2 )
 rotation = 3.92699
 texture = ExtResource( 11 )
 offset = Vector2( 5, -4 )
