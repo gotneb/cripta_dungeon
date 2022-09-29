@@ -21,14 +21,13 @@ func _ready():
 func _process(delta):
 	_move(delta)
 
-	if Input.is_action_just_pressed("z_attack"):
-		$SpelsPositon.look_at(get_global_mouse_position())
+	if Input.is_action_just_pressed("z_attack") and visible_enemies.size() >= 1:
 		throw_fire_ball()
 
 
 # Esssa funcao faz o personagem se mover
 func _move(delta: float) -> void:
-	# determina se move-se na direita ou equerda. Em seguida, determina se em cimao em baixo
+	# determina se move-se na direita ou equerda. Em seguida, determina se em cima ou em baixo
 	_velocity = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -68,12 +67,24 @@ func _need_flip() -> bool:
 
 # Arremessa uma bola de fogo
 func throw_fire_ball() -> void:
+	# Define a direcao de tiro
+	if enemy_index >= visible_enemies.size():
+		_change_enemy_index()
+	$SpelsPositon.look_at(visible_enemies[enemy_index].position)
+	# Cria a bola de fogo e adiciona no mapa
 	var fire := fire_ball_path.instance()
 	fire.position = $SpelsPositon/Position.global_position
-	fire.direction =  get_global_mouse_position() - position
+	fire.direction =  visible_enemies[enemy_index].position - position
 	fire.rotate($SpelsPositon.rotation)
 	fire.damage = fire_ball_damage
 	get_parent().add_child(fire)
+
+
+# Funcao auxiliar para trocar o index do inimigo para intervalos validos
+func _change_enemy_index() -> void:
+	enemy_index += 1
+	if enemy_index >= visible_enemies.size():
+		enemy_index = 0
 
 
 func select_enemy() -> void:
@@ -81,9 +92,7 @@ func select_enemy() -> void:
 		visible_enemies[0].set_aim_visible_to(true)
 	elif visible_enemies.size() >= 1:
 		if Input.is_action_just_pressed("change_enemy"):
-			enemy_index += 1
-			if enemy_index >= visible_enemies.size():
-				enemy_index = 0
+			_change_enemy_index()
 			visible_enemies[enemy_index - 1].set_aim_visible_to(false)
 			visible_enemies[enemy_index].set_aim_visible_to(true)
 
