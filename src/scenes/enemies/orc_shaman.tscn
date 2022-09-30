@@ -74,3 +74,5 @@ margin_bottom = -9.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hitted = SubResource( 3 )
+
+[connection signal="health_changed" from="." to="." method="_on_OrcShaman_health_changed"]

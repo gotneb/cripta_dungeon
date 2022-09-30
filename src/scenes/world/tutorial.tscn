@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tileset2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/playable_characters/wizzard.tscn" type="PackedScene" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://assets/animated/fountains/lava/lava.tres" type="Texture" id=4]
 [ext_resource path="res://scenes/enemies/orc_shaman.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/walls.png" type="Texture" id=6]
-[ext_resource path="res://scripts/world/tutorial.gd" type="Script" id=7]
-[ext_resource path="res://scenes/playable_characters/elf.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset2.png 0"
@@ -664,7 +662,6 @@
 3/z_index = 0
 
 [node name="Tutorial" type="Node2D"]
-script = ExtResource( 7 )
 
 [node name="Floor" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -708,10 +705,4 @@ position = Vector2( 813, 359 )
 position = Vector2( 710, 258 )
 
 [node name="Wizzard" parent="YSort" instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 894, 150 )
-
-[node name="Elf" parent="." instance=ExtResource( 8 )]
-position = Vector2( 831, 143 )
-
-[connection signal="health_changed" from="YSort/OrcShaman" to="." method="_on_Orc_Shaman_health_changed"]

@@ -1,6 +1,8 @@
 class_name OrcShaman
 extends KinematicBody2D
 
+const damage_indicator_path := preload("res://scenes/interface/damage_indicator/damage_indicator.tscn")
+
 signal health_changed(old_health, new_health)
 
 onready var health_bar := $HealthBar
@@ -33,3 +35,9 @@ func take_damage(damage: int) -> void:
 
 func set_aim_visible_to(state: bool) -> void:
 	aim.visible = state
+
+
+func _on_OrcShaman_health_changed(old_health, new_health):
+	var di :DamageIndicator = damage_indicator_path.instance()
+	add_child(di)
+	di.goes_up(old_health - new_health)
