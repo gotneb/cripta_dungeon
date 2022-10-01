@@ -3,7 +3,8 @@ extends KinematicBody2D
 
 # Constantes
 const fire_ball_path := preload("res://scenes/projectiles/wizzard/fire.tscn")
-
+const basic_spell_lighting_path := preload("res://scenes/projectiles/wizzard/weak_lighting_spell.tscn")
+# Variaveis
 var visible_enemies = []
 var enemy_index = 0
 
@@ -11,6 +12,7 @@ var enemy_index = 0
 var speed := 40
 var _velocity := Vector2.ZERO
 var fire_ball_damage := 4
+var basic_attack_damage := 2
 var _flip_h := false
 
 func _ready():
@@ -20,10 +22,16 @@ func _ready():
 
 func _process(delta):
 	_move(delta)
+	verify_can_attack()
 
-	if Input.is_action_just_pressed("z_attack") and visible_enemies.size() >= 1:
-		throw_fire_ball()
 
+func verify_can_attack() -> void:
+	# Somente ataca se estiver algum inimigo no raio de alcance
+	if visible_enemies.size() >= 1:
+		if Input.is_action_just_pressed("z_attack"):
+			throw_basic_spell()
+		elif visible_enemies.size() >= 1 and Input.is_action_just_pressed("x_attack"):
+			throw_fire_ball()
 
 # Esssa funcao faz o personagem se mover
 func _move(delta: float) -> void:
@@ -65,19 +73,35 @@ func _need_flip() -> bool:
 		return _flip_h
 
 
-# Arremessa uma bola de fogo
+# Lanca uma bola de fogo
 func throw_fire_ball() -> void:
 	# Define a direcao de tiro
 	if enemy_index >= visible_enemies.size():
 		_change_enemy_index()
-	$SpelsPositon.look_at(visible_enemies[enemy_index].position)
+	$SpellsPosition.look_at(visible_enemies[enemy_index].position)
 	# Cria a bola de fogo e adiciona no mapa
 	var fire := fire_ball_path.instance()
-	fire.position = $SpelsPositon/Position.global_position
+	fire.position = $SpellsPosition/Position.global_position
 	fire.direction =  visible_enemies[enemy_index].position - position
-	fire.rotate($SpelsPositon.rotation)
+	fire.rotate($SpellsPosition.rotation)
 	fire.damage = fire_ball_damage
 	get_parent().add_child(fire)
+
+
+# Lanca uma magia basica
+func throw_basic_spell() -> void:
+	# Define a direcao de tiro
+	if enemy_index >= visible_enemies.size():
+		_change_enemy_index()
+	$SpellsPosition.look_at(visible_enemies[enemy_index].position)
+	var instance = basic_spell_lighting_path.instance()
+	var basic_spell = instance.create_magic(
+		$SpellsPosition/Position.global_position,
+		visible_enemies[enemy_index].position - position,
+		$SpellsPosition.rotation,
+		basic_attack_damage
+	)
+	get_parent().add_child(basic_spell)
 
 
 # Funcao auxiliar para trocar o index do inimigo para intervalos validos
@@ -87,6 +111,7 @@ func _change_enemy_index() -> void:
 		enemy_index = 0
 
 
+# Seleciona um inimigo "visivel" para o player exibindo um alvo abaixo do inimigo
 func select_enemy() -> void:
 	if visible_enemies.size() == 1:
 		visible_enemies[0].set_aim_visible_to(true)

@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://scripts/interface/damage_indicator.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "MagicSpell",
+"language": "GDScript",
+"path": "res://scripts/projectiles/wizzard/magic_spell.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "OrcShaman",
 "language": "GDScript",
 "path": "res://scripts/enemies/orc_shaman.gd"
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DamageIndicator": "",
+"MagicSpell": "",
 "OrcShaman": "",
 "Wizzard": ""
 }
@@ -87,11 +93,22 @@ z_attack={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
+x_attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":88,"unicode":0,"echo":false,"script":null)
+ ]
+}
 change_enemy={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777218,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Projecties"
 
 [physics]
 

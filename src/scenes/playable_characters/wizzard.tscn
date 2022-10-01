@@ -34,7 +34,7 @@ radius = 5.0
 height = 6.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 113.5, 61 )
+extents = Vector2( 119.5, 65.5 )
 
 [node name="Wizzard" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -43,7 +43,7 @@ script = ExtResource( 1 )
 position = Vector2( -1, -6 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -55,16 +55,16 @@ zoom = Vector2( 0.25, 0.25 )
 limit_right = 1023
 smoothing_enabled = true
 
-[node name="SpelsPositon" type="Node2D" parent="."]
+[node name="SpellsPosition" type="Node2D" parent="."]
 
-[node name="Position" type="Position2D" parent="SpelsPositon"]
-position = Vector2( 25, 0 )
+[node name="Position" type="Position2D" parent="SpellsPosition"]
+position = Vector2( 15, 0 )
 
 [node name="Vision" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2( -1.5, 2 )
+position = Vector2( -0.5, 1.5 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
