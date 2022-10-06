@@ -7,6 +7,7 @@ signal health_changed(old_health, new_health)
 
 onready var health_bar := $HealthBar
 onready var animation := $AnimationPlayer
+onready var hit_effect := $HitAnimated
 onready var aim := $Aim
 
 var max_hp := 20
@@ -14,6 +15,7 @@ var current_hp := max_hp
 
 func _ready():
 	$AnimatedSprite.play("idle")
+	hit_effect.visible = false
 	health_bar.set_max_health(max_hp)
 	set_aim_visible_to(false)
 
@@ -21,6 +23,7 @@ func _ready():
 # Da dano no inimigo
 func take_damage(damage: int) -> void:
 	animation.play("hitted")
+	_show_hit()
 	var old_health := current_hp
 	current_hp -= damage
 	
@@ -29,8 +32,8 @@ func take_damage(damage: int) -> void:
 		current_hp = 0
 		queue_free()
 	
-	emit_signal("health_changed", old_health, current_hp)
 	health_bar.update_health(current_hp)
+	emit_signal("health_changed", old_health, current_hp)
 
 
 func set_aim_visible_to(state: bool) -> void:
@@ -41,3 +44,13 @@ func _on_OrcShaman_health_changed(old_health, new_health):
 	var di :DamageIndicator = damage_indicator_path.instance()
 	add_child(di)
 	di.goes_up(old_health - new_health)
+
+
+func _show_hit() -> void:
+	hit_effect.frame = 0
+	hit_effect.visible = true
+	hit_effect.play("default")
+
+
+func _on_HitAnimated_animation_finished():
+	hit_effect.visible = false
