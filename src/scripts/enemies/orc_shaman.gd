@@ -21,9 +21,11 @@ func _ready():
 
 
 # Da dano no inimigo
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, direction: Vector2) -> void:
 	animation.play("hitted")
 	_show_hit()
+	_dash(direction * 10)
+	
 	var old_health := current_hp
 	current_hp -= damage
 	
@@ -34,6 +36,12 @@ func take_damage(damage: int) -> void:
 	
 	health_bar.update_health(current_hp)
 	emit_signal("health_changed", old_health, current_hp)
+
+
+# Faz o inimigo recuar para uma determinada direcao
+func _dash(v: Vector2) -> void:
+	var tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", position + v, 1.5)
 
 
 func set_aim_visible_to(state: bool) -> void:

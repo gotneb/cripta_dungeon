@@ -36,5 +36,5 @@ func _on_Timer_timeout():
 # Da dano em inimigos
 func _on_HitBox_body_entered(body):
 	if body is OrcShaman:
-		body.take_damage(damage)
+		body.take_damage(damage, direction)
 		queue_free()
